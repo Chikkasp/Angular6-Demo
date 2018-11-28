@@ -1,0 +1,21 @@
+<h1>One way Data bining</h1>
+<h2>String Interpolation</h2>
+<p>{{demoData}}</p>
+<p>{{4+6}}</p>
+
+<h2>Property Binding</h2>
+<p>
+  <input type="text" value="{{demoData}}"/>
+
+</p>
+<p>
+  <input type="text" [value]="demoData"/>
+
+</p>
+<h1>Event Binding</h1>
+<button (click)="showAlert()">Click Me</button>
+
+<h1>Two way data binding</h1>
+<p>
+  <input type="text" [(ngModel)]="demoData"/>
+</p>

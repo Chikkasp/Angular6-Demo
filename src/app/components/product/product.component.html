@@ -1,0 +1,12 @@
+<div>
+  <img [src]="pData.pImage">
+  <h2>{{pData.pCost|converter :cCode | currency : cCode:'symbol':'3.1'}}</h2>
+  <h2>{{pData.pName | uppercase}}</h2>
+  <button *ngIf="pData.pStock; else noStock">Add to Cart</button>
+  
+  <ng-template #noStock>
+    <p>Out of Stock</p>
+  </ng-template>
+  </div>
+
+

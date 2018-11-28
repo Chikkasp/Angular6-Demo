@@ -1,0 +1,25 @@
+<form [formGroup] = "userForm">
+  <label>Name</label>
+  <input type="text" formControlName = "name"/>
+    <!-- <span *ngIf="userForm.get('name').hasError('required')">Name is required</span>
+    <span *ngIf="userForm.get('name').hasError('minlength')">min char length is  5</span> -->
+    <app-show-errors [ctrl]="addressObj.get('name')"></app-show-errors>
+  <label>Age</label>
+  <input type="text" formControlName = "age"/>
+  <div formGroupName="address">
+    <label>City</label>
+    <input type="text" formControlName = "city"/>
+    <label>Pincode</label>
+    <input type="text" formControlName = "pinCode"/>
+   <!-- <span *ngIf="addressObj.get('pinCode').hasError('required')">Pincode Required</span>
+    <span *ngIf="addressObj.get('pinCode').hasError('pinCode')">Allowed pincode is 
+      {{addressObj.get('pinCode').getError('pinCode').valiCode}}
+    </span> -->
+    <app-show-errors [ctrl]="addressObj.get('pinCode')"></app-show-errors>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+<pre>
+  {{userForm.value |json}}
+</pre>

@@ -1,0 +1,23 @@
+<button  (click)="loadData(userForm)">Load Data</button>
+<button  (click)="patchData(userForm)">Patch Data</button>
+<form (submit)="saveData(userForm)" #userForm="ngForm">
+  <label>Name</label>
+  <input type ="text" name="name" ngModel required minlength="5" #uname="ngModel"/>
+  <!-- <div *ngIf="uname.touched">
+    <span *ngIf="uname.errors?.required">Name is required</span>
+    <span *ngIf="uname.hasError('minlength')">min 5 char is required</span>
+  </div> -->
+  <app-show-errors [ctrl]="uname"></app-show-errors>
+
+  <label>Age</label>
+  <input type ="text" name="age"  ngModel required/>
+  <div ngModelGroup="address">
+      <label>City</label>
+      <input type ="text" name="city" ngModel required/>
+      <label>Pincode</label>
+      <input type ="text" name="pincode"  ngModel required/>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
+<pre>{{userForm.value | json}}</pre>
