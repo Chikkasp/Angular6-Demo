@@ -7,11 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-app';
-  currentCurrency : string = null;
+  date : string;
+  
+  // currentCurrency : string = null;
 
-  getCode = function(code){
-    console.log('code in APP :: '+code);
-    this.currentCurrency = code;
-  }
+  // getCode = function(code){
+  //   console.log('code in APP :: '+code);
+  //   this.currentCurrency = code;
+  // }
+  
 
 }

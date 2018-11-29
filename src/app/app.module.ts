@@ -12,6 +12,11 @@ import { ModelDrivenComponent } from './forms/model-driven/model-driven.componen
 import { ShowErrorsComponent } from './forms/show-errors/show-errors.component';
 import { DynamicFormsComponent } from './forms/dynamic-forms/dynamic-forms.component';
 import { HttpClientModule}  from '@angular/common/http';
+import { UserListComponent } from './containers/user-list/user-list.component';
+import { UserComponent } from './components/user/user.component';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+import { UserModule } from './user/user.module';
+import { CalendarDirective } from './directives/calendar.directive';
 
 
 @NgModule({
@@ -25,13 +30,17 @@ import { HttpClientModule}  from '@angular/common/http';
     TemplateDrivenComponent,
     ModelDrivenComponent,
     ShowErrorsComponent,
-    DynamicFormsComponent
+    DynamicFormsComponent,
+    UserListComponent,
+    UserComponent,
+    CalendarDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

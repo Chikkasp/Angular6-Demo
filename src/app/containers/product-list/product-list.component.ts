@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { CurrencyService } from 'src/app/services/currency.service';
 
 @Component({
   selector: 'app-product-list',
@@ -8,7 +9,8 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductListComponent implements OnInit {
 
-    @Input() code :string 
+   /// @Input() 
+   code :string 
   pList: Product []= [{
     pCost:10000,
     pId:1000,
@@ -28,9 +30,18 @@ export class ProductListComponent implements OnInit {
     pName: 'Product 3',
     pStock : true
   }]
-  constructor() { }
+  constructor(private curService :CurrencyService) { }
 
   ngOnInit() {
+    this.curService.currencyObservable$.subscribe(
+      (data) =>{
+        console.log(data);
+        this.code = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
   }
 
 }

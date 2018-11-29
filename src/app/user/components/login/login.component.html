@@ -1,0 +1,5 @@
+<button type="button" (click)="logIn()" *ngIf="!loggedIn;else signOut">Login</button>
+<ng-template #signOut>
+    <button type="button" (click)="logOut()">Logout</button>
+</ng-template>
+
