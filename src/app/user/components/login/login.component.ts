@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   logIn(){
     this.lgService.loginWithGoogle().then(
       (data) => {
-        console.log('success '+data.credential.idToken);
+        
       },
       (err) =>{
         console.log('error '+err);

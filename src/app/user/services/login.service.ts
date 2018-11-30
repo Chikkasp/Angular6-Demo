@@ -7,7 +7,17 @@ import * as firebase from 'firebase/app';
 })
 export class LoginService {
 
-  constructor(private afAuth : AngularFireAuth) { }
+  private _acessToken :string;
+  constructor(private afAuth : AngularFireAuth) { 
+    this.afAuth.idToken.subscribe(
+      (data) => {
+        if(data){
+          this._acessToken = data;
+          localStorage.setItem('token', this._acessToken);
+        }
+      }
+    );
+  }
 
   loginWithGoogle(){
     return this.afAuth.auth.signInWithPopup(
@@ -20,5 +30,8 @@ export class LoginService {
 
   public get  currentUser(){
         return this.afAuth.authState;
+  }
+  public get acessToken() :string {
+    return this._acessToken;
   }
 }

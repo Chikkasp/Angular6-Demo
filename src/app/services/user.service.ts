@@ -18,4 +18,8 @@ export class UserService {
   getusers(){
     return this.http.get(this._apiURL);
   }
+
+  getuserById(id){
+    return this.http.get(`${environment.fireBase.databaseURL}/users/${id}.json`);
+  }
 }

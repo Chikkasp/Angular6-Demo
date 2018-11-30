@@ -3,4 +3,6 @@
 <p><label>Age</label>:{{user.age}}</p>
 <p><label>City</label>:{{user.address.city}}</p>
 <p><label>Pincode</label>:{{user.address.pinCode}}</p>
+<p><a [routerLink]="['/forms/model',id]">Edit</a></p>
+<p><button type="button" (click)="goToForms()">Edit</button></p>
 </div>

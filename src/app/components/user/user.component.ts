@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserComponent implements OnInit {
  @Input() user:any= null;
-  constructor() { }
+ @Input() id : string;
+  constructor(private router : Router) { }
 
   ngOnInit() {
+  }
+
+  goToForms(){
+    console.log("Do something");
+    this.router.navigate(
+      ['/forms/model',this.id],
+      {queryParams : {action : 'update'}});
   }
 
 }

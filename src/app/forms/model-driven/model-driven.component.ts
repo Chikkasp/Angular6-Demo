@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { pinCodeValidator } from '../validators';
 import {UserService} from '../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-model-driven',
@@ -20,8 +21,16 @@ export class ModelDrivenComponent implements OnInit {
       pinCode :new FormControl(null, [Validators.required,pinCodeValidator])
     })
   },{updateOn : 'submit'});
-  constructor( private uService : UserService) {
-
+  constructor( private uService : UserService, private activateRoute :ActivatedRoute) {
+     this.activateRoute.paramMap.subscribe(
+       (param) => {
+         if(param.has('id')){
+          const id = param.get('id');
+          console.log('ID -->',id);
+          this.getUserData(id);
+         } 
+       }
+     )
    }
 
   ngOnInit() {
@@ -40,6 +49,17 @@ export class ModelDrivenComponent implements OnInit {
     }else{
       alert('invalid form data');
     }
+  }
+
+  getUserData(id){
+    this.uService.getuserById(id).subscribe(
+      (data) => {
+        this.userForm.setValue(data);
+      },
+      (err) => {
+        console.log('error occured',err);
+      }
+    )
   }
 
  

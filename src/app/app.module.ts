@@ -11,12 +11,15 @@ import { TemplateDrivenComponent } from './forms/template-driven/template-driven
 import { ModelDrivenComponent } from './forms/model-driven/model-driven.component';
 import { ShowErrorsComponent } from './forms/show-errors/show-errors.component';
 import { DynamicFormsComponent } from './forms/dynamic-forms/dynamic-forms.component';
-import { HttpClientModule}  from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS}  from '@angular/common/http';
 import { UserListComponent } from './containers/user-list/user-list.component';
 import { UserComponent } from './components/user/user.component';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { UserModule } from './user/user.module';
 import { CalendarDirective } from './directives/calendar.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { ErrorComponent } from './components/error/error.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 @NgModule({
@@ -33,16 +36,24 @@ import { CalendarDirective } from './directives/calendar.directive';
     DynamicFormsComponent,
     UserListComponent,
     UserComponent,
-    CalendarDirective
+    CalendarDirective,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    UserModule
+    UserModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass : AuthInterceptorService,
+      multi :true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

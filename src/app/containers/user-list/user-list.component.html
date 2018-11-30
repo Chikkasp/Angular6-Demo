@@ -1,4 +1,4 @@
 <div *ngFor=" let u of uList | keyvalue">
-    <app-user [user]= "u.value"></app-user>
+    <app-user [user]= "u.value" [id]="u.key"></app-user>
     <h5>===========================</h5>
 </div>

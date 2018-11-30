@@ -5,15 +5,21 @@
 <!-- <app-currency (selectedCode)="getCode($event.data)"></app-currency>
 <app-product-list [code]="currentCurrency"></app-product-list> -->
 
+<a routerLink="/products">Products</a> <br>
+<a routerLink="/demo">Demo</a>
+<a routerLink="/users">Users</a>
 <!-- Data sharing(subscriber) service Example-->
-<!-- <app-currency ></app-currency>
-<app-product-list></app-product-list>  -->
+<app-currency ></app-currency>
+<!-- <app-product-list></app-product-list>  -->
 
 <!-- <app-template-driven></app-template-driven> -->
 <!-- <app-model-driven></app-model-driven>  -->
 <!-- <app-dynamic-forms></app-dynamic-forms> -->
 <!-- <app-user-list></app-user-list> -->
 
-<!-- <app-login></app-login> -->
-<input type="text" appCalendar="-"/>
+<app-login></app-login> 
+<!-- <input type="text" appCalendar="-"/> -->
+<router-outlet></router-outlet>
+
+
 
